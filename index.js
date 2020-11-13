@@ -27,7 +27,7 @@ client.on('message', message => {
     const command = args.shift().toLowerCase();
 
     switch (command) {
-        case('poll:create'):
+        case('create'):
             if (!pollChannel) {
                 message.channel.send("Poll Channel Not Set!, use $poll:channel <channel> "+pingUser(message.author));
                 break;
@@ -46,7 +46,7 @@ client.on('message', message => {
                 message.react(e2);
             });
             break;
-        case('poll:channel'):
+        case('channel'):
             const desiredChannel = message.mentions.channels.first();
             if (!desiredChannel) {
                 message.channel.send("Poll Channel Not Set!, please mention a channel "+pingUser(message.author));
@@ -60,8 +60,8 @@ client.on('message', message => {
             break;
         case("help"):
             message.channel.send("**Commands:**");
-            message.channel.send(" - "+prefix+"poll:create <option1> <emoji1> <option2> <emoji2>");
-            message.channel.send(" - "+prefix+"poll:channel <channel>");
+            message.channel.send(" - "+prefix+"create <option1> <emoji1> <option2> <emoji2>");
+            message.channel.send(" - "+prefix+"channel <channel>");
             break;
     }
 });
